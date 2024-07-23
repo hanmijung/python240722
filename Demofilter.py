@@ -8,7 +8,9 @@ def getBiggerThan20(i):
 iterL=filter(getBiggerThan20,lst)
 for item in iterL:
     print("item:{0}".format(item))
+
+#  람다연습    
 iterL=filter(lambda x:x>20,lst)
 for item in iterL:
     print("item:{0}".format(item))
-    
+
