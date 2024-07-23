@@ -1,0 +1,29 @@
+import re
+
+def is_valid_email(email):
+    # 이메일 주소에 대한 정규 표현식
+    email_regex = re.compile(
+        r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+    )
+    return re.match(email_regex, email) is not None
+
+# 테스트할 샘플 이메일 주소들
+sample_emails = [
+    "test.email@example.com",
+    "user@subdomain.example.com",
+    "user.name+tag+sorting@example.com",
+    "user.name@example.co.uk",
+    "user@example",
+    "user@.com",
+    "user@domain.com",
+    "user@domain.co.in",
+    "user.name@domain.com",
+    "@example.com"
+]
+
+# 각 이메일 주소를 검증하고 결과를 출력
+for email in sample_emails:
+    if is_valid_email(email):
+        print(f"{email}: Valid")
+    else:
+        print(f"{email}: Invalid")
