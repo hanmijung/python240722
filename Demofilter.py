@@ -5,6 +5,7 @@ for item in iterL:
 
 def getBiggerThan20(i):
     return i>20
+
 iterL=filter(getBiggerThan20,lst)
 for item in iterL:
     print("item:{0}".format(item))
@@ -13,4 +14,6 @@ for item in iterL:
 iterL=filter(lambda x:x>20,lst)
 for item in iterL:
     print("item:{0}".format(item))
+
+    
 

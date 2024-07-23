@@ -1,3 +1,5 @@
+#전역변수
+
 strName = "Not Class Member"
 
 class DemoString:
@@ -6,8 +8,10 @@ class DemoString:
     def set(self, msg):
         self.strName = msg
     def print(self):
-        print(str)
-
+        # 모호한 것보다는 명확한 것이 좋다
+        print(self.strName)
+        
+#인스턴스 생성
 d = DemoString()
 d.set("First Message")
 d.print()
