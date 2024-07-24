@@ -1,0 +1,35 @@
+import requests
+from bs4 import BeautifulSoup
+
+class NaverClassExtractor:
+    def __init__(self, url):
+        self.url = url
+        self.html_content = self.fetch_html_content()
+        self.soup = BeautifulSoup(self.html_content, 'html.parser')
+
+    def fetch_html_content(self):
+        try:
+            response = requests.get(self.url)
+            response.raise_for_status()
+            return response.text
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching the HTML content: {e}")
+            return ""
+
+    def extract_class_names(self):
+        class_names = set()
+        for tag in self.soup.find_all(class_=True):
+            classes = tag.get('class')
+            for cls in classes:
+                class_names.add(cls)
+        return class_names
+
+    def print_class_names(self):
+        class_names = self.extract_class_names()
+        for class_name in class_names:
+            print(class_name)
+
+# Usage
+url = 'https://search.naver.com/search.naver'
+extractor = NaverClassExtractor(url)
+extractor.print_class_names()
